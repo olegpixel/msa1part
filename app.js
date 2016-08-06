@@ -6,10 +6,13 @@ var app = express();
 app.use(express.static(__dirname + '/app'));
 
 // Set the view engine
-app.set('view engine', 'html');
+app.set('view engine', 'hbs');
 
 // Set the directory that contains the views
 app.set('views', __dirname + '/app');
+
+// Use the router middleware
+app.use(app.router);
 
 // Create HTTP server with your app
 var http = require("http");
