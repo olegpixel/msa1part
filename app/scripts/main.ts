@@ -14,7 +14,7 @@ $('#service').submit(function( event ) {
 
     $.ajax({
         // url: "https://api.twitter.com/1.1/search/tweets.json?q=#"+ value + "&" + $.param(twiParams),
-        url: "http://localhost:3000/twi/" + value,
+        url: "/twi/" + value,
         type: "GET",
     })
     .done(function(data) {

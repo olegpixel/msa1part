@@ -1,1 +1,1 @@
-var twiParams={lang:"en",count:"20",result_type:"popular"};$("#service").submit(function(t){t.preventDefault();var e=$("#value_submit").val();$.ajax({url:"http://localhost:3000/twi/"+e,type:"GET"}).done(function(t){console.log(t),alert("done")})});
+var twiParams={lang:"en",count:"20",result_type:"popular"};$("#service").submit(function(e){e.preventDefault();var t=$("#value_submit").val();$.ajax({url:"/twi/"+t,type:"GET"}).done(function(e){console.log(e),alert("done")})});
