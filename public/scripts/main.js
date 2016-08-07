@@ -1,1 +1,1 @@
-"use strict";console.log("'Allo 'Allo!");
+$("#service").submit(function(e){e.preventDefault();var t=$("#value_submit").val();alert(t)});
