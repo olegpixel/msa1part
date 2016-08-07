@@ -13,6 +13,10 @@ var T = new Twit({
 
 router.get('/:val', function(req, res, next) {
   console.log(req.params.val);
+    T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function(err, data, response) {
+        console.log(data)
+    });
+
   res.status(200).json({
     title: 'test-title'
   });
