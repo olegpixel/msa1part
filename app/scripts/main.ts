@@ -1,11 +1,6 @@
 declare var $ : any;
 
-// Twitter Parse Parameters
-const twiParams = {
-    "lang": "en",
-    "count": "20",
-    "result_type": "popular"
-};
+$('a').smoothScroll();
 
 $('#service').submit(function( event ) {
     event.preventDefault();
@@ -13,13 +8,24 @@ $('#service').submit(function( event ) {
     let value:string = $("#value_submit").val();
 
     $.ajax({
-        // url: "https://api.twitter.com/1.1/search/tweets.json?q=#"+ value + "&" + $.param(twiParams),
         url: "/twi/" + value,
         type: "GET",
     })
     .done(function(data) {
-        console.log(data);
-        alert('done');
+        $("#results").addClass( "block grey");
+        $('html, body').animate({
+            scrollTop: $("#results").offset().top
+        }, 500);
+        var resultDiv = $('#results > .container > .row');
+        resultDiv.html('');
+        resultDiv.append("<div class='col-sm-12'><h2>Twitter Results for keyword: " + value + "</h2></div>");
+
+        console.log(data.statuses);
+        $.each(data.statuses, function(key, str) {
+            //<div class="alert alert-success" role="alert">
+            resultDiv.append("<div class='alert alert-success' role='alert'>" + str.text + "</div>");
+            console.log(key + ": " + str.text);
+        });
     });
 
 });

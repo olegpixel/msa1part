@@ -11,15 +11,19 @@ var T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
+// Twitter Parse Parameters
+const twiParams = {
+    "lang": "en",
+    "count": "20",
+    "result_type": "popular"
+};
+
 router.get('/:val', function(req, res, next) {
   console.log(req.params.val);
-    T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function(err, data, response) {
-        console.log(data)
+    T.get('search/tweets', { q: req.params.val, result_type:"popular", lang:"en", count: 30 }, function(err, data, response) {
+        res.status(200).json(data);
+        console.log(data);
     });
-
-  res.status(200).json({
-    title: 'test-title'
-  });
 });
 
 module.exports = router;
