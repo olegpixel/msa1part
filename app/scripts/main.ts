@@ -49,11 +49,10 @@ function textAnalytics(twitterResultArray: Array<TwitElement>): void {
             async: false,
         })
         .done(function(data) {
-            console.log(data);
-            console.log(data.documents[0]);
-            console.log(data.documents[0].score);
-            let resEl = new ResultElement (value.text, data.documents[0].score, value.created_at, value.retweet_count, value.followers_count);
-            // add the object into array
+            let result:any = $.parseJSON(data);
+            console.log(result);
+            let resEl = new ResultElement (value.text, result.documents[0].score, value.createdAt, value.retweet_count, value.followers_count);
+            // add the object into result array
             ResultArray.push(resEl);            
         })
         .fail(function() {
@@ -110,7 +109,7 @@ $('#service').submit(function( event ) {
             // call Text Analytics API function
             textAnalytics(twitterResultArray);
             // call function for showing results
-
+            console.log(ResultArray);
         }
     })
     .fail(function() {
