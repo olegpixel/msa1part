@@ -37,25 +37,16 @@ var ResultArray: Array<ResultElement> = [];
 // -------------------------- text analyse function ---------------------------- //
 // ----------------------------------------------------------------------------- //
 function textAnalytics(twitterResultArray: Array<TwitElement>): void {
-    // params for Text Analytics API
-    let params = {
-        "language": "en"
-    };
-
     let ifError:boolean = false;
-
     $.each(twitterResultArray, function( index, value ) {
-        console.log(value.text);
+        let tempString:string = (value.text).replace(/\//g, '');
         $.ajax({
-            url: "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","78ab253d040649f3a5d2e577e959d596");
-            },
-            type: "POST",
-            // Send text value for analyse
-            data: value.text,
+            // Problem with
+            // No 'Access-Control-Allow-Origin' header is present on the requested resource. 
+            // Use back-end to solve it
+            url: "/textanalysis/" + tempString,
+            type: "GET",
+            async: false,
         })
         .done(function(data) {
             console.log(data);
@@ -68,13 +59,12 @@ function textAnalytics(twitterResultArray: Array<TwitElement>): void {
         .fail(function() {
             ifError = true;
         }); 
-        if (ifError) {
-            alert("Error with Text Analytics API");
-        }
     });
+    if (ifError) {
+        alert("Error with Text Analytics API");
+    }    
    
 }
-
 
 // ----------------------------------------------------------------------------- //
 // -------------------------- submit form event -------------------------------- //

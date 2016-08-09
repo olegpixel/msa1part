@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var twi = require('./routes/twis');
+var textanalysis = require('./routes/textanalysis');
 var routes = require('./routes/index');
 
 var app = express();
@@ -24,11 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function (req , res ,next) {
   res.setHeader('Access-Control-Allow-Origin' , '*');
   res.setHeader('Access-Control-Allow-Methods' , 'GET,POST,PUT,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers' , 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+  res.setHeader('Access-Control-Allow-Headers' , 'Origin, X-Requested-With, Content-Type, Accept, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
   next();
 });
 
 app.use('/twi', twi);
+app.use('/textanalysis', textanalysis);
 app.use('/', routes);
 
 // catch 404 and forward to error handler

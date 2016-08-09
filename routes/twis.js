@@ -19,10 +19,8 @@ const twiParams = {
 };
 
 router.get('/:val', function(req, res, next) {
-  console.log(req.params.val);
     T.get('search/tweets', { q: req.params.val, result_type:"popular", lang:"en", count: 30 }, function(err, data, response) {
         res.status(200).json(data);
-        console.log(data);
     });
 });
 
