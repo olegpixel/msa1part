@@ -1,0 +1,8 @@
+"--module"
+"commonjs"
+"--target"
+"ES3"
+"--outDir"
+"f:\Study\MSA\project\gulp-tsc-tmp-116710-11716-1ga5zvu.6bw8bk2o6r"
+"f:\Study\MSA\project\app\scripts\main.ts"
+"f:\Study\MSA\project\app\scripts\.gulp-tsc-tmp-116710-11716-15k88e7.y2gickrzfr.ts"

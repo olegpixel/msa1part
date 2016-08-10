@@ -8,6 +8,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/fakeLoader.css">    
     <script type="text/javascript">
     var appInsights=window.appInsights||function(config){
         function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
@@ -18,6 +19,11 @@
         window.appInsights=appInsights;
         appInsights.trackPageView();
     </script>    
+	<meta property="og:url"           content="http://msaproject.azurewebsites.net/" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="Twitter Review Finder" />
+	<meta property="og:description"   content="MSA 2016 Project - Twitter Review Finder" />
+	<meta property="og:image"         content="http://msaproject.azurewebsites.net/images/logo.png" />    
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -64,7 +70,7 @@
     <section id="results">
         <div class="container">
             <div class="row">
-                
+                <!-- Result would be placed here -->
             </div>
         </div>
     </section>
@@ -163,11 +169,26 @@
             </div>
         </div>        
     </footer>
-    
+
+    <div id="fakeloader"></div>
+
+	<!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7&appId=1042305322527123";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="fb-share-layer">
+        <div class="fb-share-button" data-href="https://msaproject.azurewebsites.net/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmsaproject.azurewebsites.net%2F&amp;src=sdkpreparse">Share</a></div>
+    </div>
 
     <script src="scripts/jquery.min.js"></script>
-    <script src="scripts/main.js"></script>
-
+    <script src="scripts/fakeLoader.js"></script> 
+    <script src="scripts/main.js"></script>       
 
   </body>
 </html>

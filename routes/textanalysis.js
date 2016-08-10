@@ -12,15 +12,15 @@ router.get('/:val', function(req, res, next) {
     var textToSend = '"' + req.params.val + '"';
 
     var dataToSend = 
-{
-  "documents": [
         {
-            "language": "en",
-            "id": "1",
-            "text": textToSend
-        }
-    ]
-};
+        "documents": [
+                {
+                    "language": "en",
+                    "id": "1",
+                    "text": textToSend
+                }
+            ]
+        };
 
     var dataToSendSerialized = JSON.stringify(dataToSend);
 
@@ -37,6 +37,7 @@ router.get('/:val', function(req, res, next) {
         if(error) {
             console.log(error);
         } else {
+            // send response back to front-end
             res.status(200).json(body);
             console.log(response, response.statusCode, body);
         }

@@ -2,6 +2,15 @@ $icon-font-path: '../fonts/';
 
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
+$dark-gray-color: #323d63;
+$light-blue-color: #88abbb;
+$almost-white-color: #E8E8E8;
+$darker-gray-color: #273144;
+$white-color: #fff;
+$gray-color: gray;
+$light-gray-color: #E0E0E0;
+$green-light-color: #7ebe21;
+
 body {
     font-family: Lato, sans-serif;
 }
@@ -24,7 +33,7 @@ header {
 }
 
 .navbar-default {
-    background-color: #313d53;
+    background-color: $dark-gray-color;
     border: medium none;
     border-radius: 0;
     font-size: 16px;
@@ -32,20 +41,20 @@ header {
     .navbar-nav {
       >li {
         >a {
-          color: #889bbc;
+          color: $light-blue-color;
           font-size: 16px;
           padding: 25px;
 
           &:hover {
-            background-color: #e7e7e7;
-            color: #889bbc;
+            background-color: $almost-white-color;
+            color: $light-blue-color;
           }
         }
       } 
       >.active {
         >a {
-            background-color: #273144;
-            color: #fff;
+            background-color: $darker-gray-color;
+            color: $white-color;
         }
       }
     }
@@ -67,13 +76,13 @@ header {
   background: url(../images/background-main.png) repeat top left fixed;
   background-size: auto;
   height: 100vh; 
-  min-height: 250px;
+  min-height: 400px;
 
   .text {
     position: relative;
     top: 35%;
     margin: auto;
-    color: white;
+    color: $white-color;
     max-width: 750px;
     text-align: center;
 
@@ -90,7 +99,7 @@ header {
       border-style: solid none solid solid;
       border-width: 2px 0 2px 2px;
       box-sizing: border-box;
-      color: gray;
+      color: $gray-color;
       flex: 1 1 0;
       min-width: 0;
       outline: medium none;
@@ -100,15 +109,15 @@ header {
       position: relative;
       width: 370px;
       font-size: 19px;
-      border-color: #E0E0E0;
+      border-color: $light-gray-color;
     }
     button {
       border-radius: 0 7px 7px 0;
       border-style: solid solid solid none;
       border-width: 2px 2px 2px 0;      
-      border-color: #E0E0E0;
+      border-color: $light-gray-color;
       box-sizing: border-box;
-      color: gray;
+      color: $gray-color;
       padding: 11px 16px 4px;
       transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
       font-size: 26px;
@@ -117,13 +126,13 @@ header {
       line-height: 1.5;
       margin: 0;
       text-align: center;
-      background-color: #fff;
+      background-color: $white-color;
       position: relative;
       left: -3px;
 
       &:hover {
-        background-color: #E8E8E8;
-        color: #313d53;
+        background-color: $almost-white-color;
+        color: $dark-gray-color;
       }
     }
 
@@ -141,7 +150,7 @@ header {
   }
 }
 .grey {
-  background-color: #f7f7f7;
+  background-color: #f6f6f6;
 }
 .icons {
   .icon-block {
@@ -163,16 +172,78 @@ header {
   }
 }
 footer {
-    background-color: #7dbd22;
+    background-color: $green-light-color;
     min-height: 50px;
     .copyright {
-      color: #fff;
+      color: $white-color;
       margin: 15px 0;
     }
 }
 a[name] {
     position: relative;
     top:-30px;
+}
+.fb-share-layer {
+  position: fixed;
+  right: 12px;
+  bottom: 0;
+  height: 37px;
+  z-index: 99;
+
+  .fb-share-button {
+    z-index: 199;
+    display: block;
+    margin: auto;
+  }
+}
+
+.bs-callout {
+    border-image: none;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px 1px 1px 5px;
+    margin: 20px 0;
+    padding: 20px;
+    border-color: $light-gray-color;
+    background-color: $white-color;
+
+    .twiDate {
+      float: right;
+    }
+
+    span {
+      color: $gray-color;
+    }
+    p {
+      color: #000;
+      span {
+        margin-right: 20px;
+      }
+      i {
+        margin-right: 10px;
+      }
+    }
+}
+#parseStatus {
+  color:$white-color;
+  font-size: 24px;
+  position: fixed;
+  top: 65%;
+  text-align: center;
+  width: 100vw;
+  p {
+    display: block;
+    margin: auto;
+  }
+}
+.negativeText {
+    border-left-color: #ce4844;
+}
+.positiveText {
+    border-left-color: #5cb85c;
+}
+.neutralText {
+    border-left-color: $gray-color;
 }
 @media screen and (max-width: 768px) {
 
@@ -190,6 +261,9 @@ a[name] {
     .text {
       top: 25%;
     }  
+  }
+  .fb-share-layer {
+    display: none;
   }
 
 }

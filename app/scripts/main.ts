@@ -39,7 +39,7 @@ var ResultArray: Array<ResultElement> = [];
 function textAnalytics(twitterResultArray: Array<TwitElement>): void {
     let ifError:boolean = false;
     $.each(twitterResultArray, function( index, value ) {
-        let tempString:string = (value.text).replace(/\//g, '');
+        let tempString:string = (value.text).replace(/#|\//g, '');
         $.ajax({
             // Problem with
             // No 'Access-Control-Allow-Origin' header is present on the requested resource. 
@@ -53,7 +53,9 @@ function textAnalytics(twitterResultArray: Array<TwitElement>): void {
             console.log(result);
             let resEl = new ResultElement (value.text, result.documents[0].score, value.createdAt, value.retweet_count, value.followers_count);
             // add the object into result array
-            ResultArray.push(resEl);            
+            ResultArray.push(resEl);     
+            // show parse status into div on loader layer
+            $("#parseStatus > p").text(ResultArray.length + " out of " + twitterResultArray.length + " tweets analysed");       
         })
         .fail(function() {
             ifError = true;
@@ -66,6 +68,34 @@ function textAnalytics(twitterResultArray: Array<TwitElement>): void {
 }
 
 // ----------------------------------------------------------------------------- //
+// -------------------------- show results function ---------------------------- //
+// ----------------------------------------------------------------------------- //
+function renderResults(tResultArray: Array<ResultElement>): void {
+    $.each(tResultArray, function( index, value ) {
+
+        // check sentiment of the text and assign appropriate css class
+        let sentimentClass:string;
+        if (value.sentiment >= 0 && value.sentiment < 0.4) {
+            sentimentClass = "negativeText";
+        } else if (value.sentiment > 0.6 && value.sentiment <= 1) {
+            sentimentClass = "positiveText";
+        } else {
+            sentimentClass = "neutralText";
+        }
+        let creationDateConversion: Date = new Date(value.createdAt);
+        
+        let resultHTMLelement:string = "<div class='bs-callout " + sentimentClass + "'>";
+        resultHTMLelement += "<span class='twiDate'>" + creationDateConversion.toDateString() + "</span>";
+        resultHTMLelement += "<p>" + value.text + "</p>";
+        resultHTMLelement += "<p><span><i class='glyphicon glyphicon-user'></i> Followers: " + value.followers_count + "</span>";
+        resultHTMLelement += "<span><i class='glyphicon glyphicon-retweet'></i> Retweets: " + value.retweet_count + "</span>"
+        resultHTMLelement += "<span><i class='glyphicon glyphicon-stats'></i> Sentiment value: " + Math.round(value.sentiment * 100) / 100 + "</span></p>";
+        resultHTMLelement += "</div>";
+        $('#finalResult').append(resultHTMLelement);
+    });
+}
+
+// ----------------------------------------------------------------------------- //
 // -------------------------- submit form event -------------------------------- //
 // ----------------------------------------------------------------------------- //
 $('#service').submit(function( event ) {
@@ -73,6 +103,9 @@ $('#service').submit(function( event ) {
     event.preventDefault();
     // Get input text value
     let value:string = $("#value_submit").val();
+    // show loader layer
+    $("#fakeloader").fakeLoader();
+    $("#parseStatus > p").text("Call Twitter API");
     // send request to our back-end for twitter results
     $.ajax({
         url: "/twi/" + value,
@@ -91,12 +124,12 @@ $('#service').submit(function( event ) {
         resultDiv.html('');
         // show title and search keyword
         resultDiv.append("<div class='col-sm-12'><h2>Twitter Results for keyword: " + value + "</h2></div>");
-
-        console.log(data.statuses);
         // check if something was found for our keyword
         if (data.statuses.length == 0) {
             resultDiv.append("<p>Sorry, nothing found for this query.</p>");
+            $("#fakeloader").fadeOut();
         } else {
+            $("#parseStatus > p").html("Found " + data.statuses.length + " tweets<br />Starting text analysis...");
             // store all received info into an array
             $.each(data.statuses, function(key, str) {
                 // create new object with one particular twit
@@ -108,7 +141,10 @@ $('#service').submit(function( event ) {
             resultDiv.append("<div class='col-sm-12'><div id='finalResult'></div></div>");
             // call Text Analytics API function
             textAnalytics(twitterResultArray);
+            // hide loader layer
+            $("#fakeloader").fadeOut();
             // call function for showing results
+            renderResults(ResultArray);
             console.log(ResultArray);
         }
     })
@@ -116,7 +152,3 @@ $('#service').submit(function( event ) {
         alert("Error with Twitter API");
     });
 });
-
-
-                //<div class="alert alert-success" role="alert">
-                //resultDiv.append("<div class='alert alert-success' role='alert'>" + str.text + "</div>");

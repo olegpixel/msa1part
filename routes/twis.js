@@ -14,7 +14,7 @@ var T = new Twit({
 // Twitter Parse Parameters
 const twiParams = {
     "lang": "en",
-    "count": "20",
+    "count": "3",
     "result_type": "popular"
 };
 
