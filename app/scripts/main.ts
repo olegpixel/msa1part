@@ -109,54 +109,59 @@ $('#service').submit(function( event ) {
     ResultArray = [];
     // Get input text value
     let value:string = $("#value_submit").val();
-    // show loader layer
-    $("#fakeloader").fakeLoader();
-    $("#fakeloader").fadeIn();
-    $("#parseStatusText").text("Call Twitter API");
-    // send request to our back-end for twitter results
-    $.ajax({
-        url: "/twi/" + value,
-        type: "GET",
-    })
-    // on success - store information into an array 
-    .done(function(data) {
-        $("#results").addClass("block grey");
-        // scroll to our results div
-        $('html, body').animate({
-            scrollTop: $("#results").offset().top
-        }, 500);
-        // select div for future result
-        var resultDiv = $('#results > .container > .row');
-        // clear all old information
-        resultDiv.html('');
-        // show title and search keyword
-        resultDiv.append("<div class='col-sm-12'><h2>Twitter Results for keyword: " + value + "</h2></div>");
-        // check if something was found for our keyword
-        if (data.statuses.length == 0) {
-            resultDiv.append("<p>Sorry, nothing found for this query.</p>");
-            $("#fakeloader").fadeOut();
-        } else {
-            document.getElementById("parseStatusText").innerHTML = "123123";
-            $("#parseStatusText").text("Found " + data.statuses.length + " tweets<br />Starting text analysis...");
-            // store all received info into an array
-            $.each(data.statuses, function(key, str) {
-                // create new object with one particular twit
-                let twiEl = new TwitElement(str.text, str.created_at, str.retweet_count, str.user.followers_count);
-                // add the object into array
-                twitterResultArray.push(twiEl);
-            });
-            // creat div for finalized results with unique id=finalResult
-            resultDiv.append("<div class='col-sm-12'><div id='finalResult'></div></div>");
-            // call Text Analytics API function
-            textAnalytics(twitterResultArray);
-            // hide loader layer
-            $("#fakeloader").fadeOut();
-            // call function for showing results
-            renderResults(ResultArray);
-            console.log(ResultArray);
-        }
-    })
-    .fail(function() {
-        alert("Error with Twitter API");
-    });
+    // check if keyword not empty or short
+    if (value.length > 2) {
+        // show loader layer
+        $("#fakeloader").fakeLoader();
+        $("#fakeloader").fadeIn();
+        $("#parseStatusText").text("Call Twitter API");
+        // send request to our back-end for twitter results
+        $.ajax({
+            url: "/twi/" + value,
+            type: "GET",
+        })
+        // on success - store information into an array 
+        .done(function(data) {
+            $("#results").addClass("block grey");
+            // scroll to our results div
+            $('html, body').animate({
+                scrollTop: $("#results").offset().top
+            }, 500);
+            // select div for future result
+            var resultDiv = $('#results > .container > .row');
+            // clear all old information
+            resultDiv.html('');
+            // show title and search keyword
+            resultDiv.append("<div class='col-sm-12'><h2>Twitter Results for keyword: " + value + "</h2></div>");
+            // check if something was found for our keyword
+            if (data.statuses.length == 0) {
+                resultDiv.append("<p>Sorry, nothing found for this query.</p>");
+                $("#fakeloader").fadeOut();
+            } else {
+                document.getElementById("parseStatusText").innerHTML = "123123";
+                $("#parseStatusText").text("Found " + data.statuses.length + " tweets<br />Starting text analysis...");
+                // store all received info into an array
+                $.each(data.statuses, function(key, str) {
+                    // create new object with one particular twit
+                    let twiEl = new TwitElement(str.text, str.created_at, str.retweet_count, str.user.followers_count);
+                    // add the object into array
+                    twitterResultArray.push(twiEl);
+                });
+                // creat div for finalized results with unique id=finalResult
+                resultDiv.append("<div class='col-sm-12'><div id='finalResult'></div></div>");
+                // call Text Analytics API function
+                textAnalytics(twitterResultArray);
+                // hide loader layer
+                $("#fakeloader").fadeOut();
+                // call function for showing results
+                renderResults(ResultArray);
+                console.log(ResultArray);
+            }
+        })
+        .fail(function() {
+            alert("Error with Twitter API");
+        });
+    } else {
+        $("#dialog").dialog();
+    }
 });

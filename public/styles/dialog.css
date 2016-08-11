@@ -1,0 +1,120 @@
+/*!
+ * jQuery UI Dialog 1.12.0
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/dialog/#theming
+ */
+.ui-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: .2em;
+  outline: 0;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  padding: .4em 1em;
+  position: relative;
+}
+
+.ui-dialog .ui-dialog-title {
+  float: left;
+  margin: .1em 0;
+  white-space: nowrap;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  position: absolute;
+  right: .3em;
+  top: 50%;
+  width: 20px;
+  margin: -10px 0 0 0;
+  padding: 1px;
+  height: 20px;
+}
+
+.ui-dialog .ui-dialog-content {
+  position: relative;
+  border: 0;
+  padding: .5em 1em;
+  background: none;
+  overflow: auto;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+  text-align: left;
+  border-width: 1px 0 0 0;
+  background-image: none;
+  margin-top: .5em;
+  padding: .3em 1em .5em .4em;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+  float: right;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+  margin: .5em .4em .5em 0;
+  cursor: pointer;
+}
+
+.ui-dialog .ui-resizable-n {
+  height: 2px;
+  top: 0;
+}
+
+.ui-dialog .ui-resizable-e {
+  width: 2px;
+  right: 0;
+}
+
+.ui-dialog .ui-resizable-s {
+  height: 2px;
+  bottom: 0;
+}
+
+.ui-dialog .ui-resizable-w {
+  width: 2px;
+  left: 0;
+}
+
+.ui-dialog .ui-resizable-se,
+.ui-dialog .ui-resizable-sw,
+.ui-dialog .ui-resizable-ne,
+.ui-dialog .ui-resizable-nw {
+  width: 7px;
+  height: 7px;
+}
+
+.ui-dialog .ui-resizable-se {
+  right: 0;
+  bottom: 0;
+}
+
+.ui-dialog .ui-resizable-sw {
+  left: 0;
+  bottom: 0;
+}
+
+.ui-dialog .ui-resizable-ne {
+  right: 0;
+  top: 0;
+}
+
+.ui-dialog .ui-resizable-nw {
+  left: 0;
+  top: 0;
+}
+
+.ui-draggable .ui-dialog-titlebar {
+  cursor: move;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRpYWxvZy5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7OztHQVNHO0FBQ0g7RUFDQyxtQkFBbUI7RUFDbkIsT0FBTztFQUNQLFFBQVE7RUFDUixjQUFjO0VBQ2QsV0FBVztDQUNYOztBQUNEO0VBQ0Msa0JBQWtCO0VBQ2xCLG1CQUFtQjtDQUNuQjs7QUFDRDtFQUNDLFlBQVk7RUFDWixlQUFlO0VBQ2Ysb0JBQW9CO0VBQ3BCLFdBQVc7RUFDWCxpQkFBaUI7RUFDakIsd0JBQXdCO0NBQ3hCOztBQUNEO0VBQ0MsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixTQUFTO0VBQ1QsWUFBWTtFQUNaLG9CQUFvQjtFQUNwQixhQUFhO0VBQ2IsYUFBYTtDQUNiOztBQUNEO0VBQ0MsbUJBQW1CO0VBQ25CLFVBQVU7RUFDVixrQkFBa0I7RUFDbEIsaUJBQWlCO0VBQ2pCLGVBQWU7Q0FDZjs7QUFDRDtFQUNDLGlCQUFpQjtFQUNqQix3QkFBd0I7RUFDeEIsdUJBQXVCO0VBQ3ZCLGlCQUFpQjtFQUNqQiw0QkFBNEI7Q0FDNUI7O0FBQ0Q7RUFDQyxhQUFhO0NBQ2I7O0FBQ0Q7RUFDQyx5QkFBeUI7RUFDekIsZ0JBQWdCO0NBQ2hCOztBQUNEO0VBQ0MsWUFBWTtFQUNaLE9BQU87Q0FDUDs7QUFDRDtFQUNDLFdBQVc7RUFDWCxTQUFTO0NBQ1Q7O0FBQ0Q7RUFDQyxZQUFZO0VBQ1osVUFBVTtDQUNWOztBQUNEO0VBQ0MsV0FBVztFQUNYLFFBQVE7Q0FDUjs7QUFDRDs7OztFQUlDLFdBQVc7RUFDWCxZQUFZO0NBQ1o7O0FBQ0Q7RUFDQyxTQUFTO0VBQ1QsVUFBVTtDQUNWOztBQUNEO0VBQ0MsUUFBUTtFQUNSLFVBQVU7Q0FDVjs7QUFDRDtFQUNDLFNBQVM7RUFDVCxPQUFPO0NBQ1A7O0FBQ0Q7RUFDQyxRQUFRO0VBQ1IsT0FBTztDQUNQOztBQUNEO0VBQ0MsYUFBYTtDQUNiIiwiZmlsZSI6ImRpYWxvZy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiFcclxuICogalF1ZXJ5IFVJIERpYWxvZyAxLjEyLjBcclxuICogaHR0cDovL2pxdWVyeXVpLmNvbVxyXG4gKlxyXG4gKiBDb3B5cmlnaHQgalF1ZXJ5IEZvdW5kYXRpb24gYW5kIG90aGVyIGNvbnRyaWJ1dG9yc1xyXG4gKiBSZWxlYXNlZCB1bmRlciB0aGUgTUlUIGxpY2Vuc2UuXHJcbiAqIGh0dHA6Ly9qcXVlcnkub3JnL2xpY2Vuc2VcclxuICpcclxuICogaHR0cDovL2FwaS5qcXVlcnl1aS5jb20vZGlhbG9nLyN0aGVtaW5nXHJcbiAqL1xyXG4udWktZGlhbG9nIHtcclxuXHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0dG9wOiAwO1xyXG5cdGxlZnQ6IDA7XHJcblx0cGFkZGluZzogLjJlbTtcclxuXHRvdXRsaW5lOiAwO1xyXG59XHJcbi51aS1kaWFsb2cgLnVpLWRpYWxvZy10aXRsZWJhciB7XHJcblx0cGFkZGluZzogLjRlbSAxZW07XHJcblx0cG9zaXRpb246IHJlbGF0aXZlO1xyXG59XHJcbi51aS1kaWFsb2cgLnVpLWRpYWxvZy10aXRsZSB7XHJcblx0ZmxvYXQ6IGxlZnQ7XHJcblx0bWFyZ2luOiAuMWVtIDA7XHJcblx0d2hpdGUtc3BhY2U6IG5vd3JhcDtcclxuXHR3aWR0aDogOTAlO1xyXG5cdG92ZXJmbG93OiBoaWRkZW47XHJcblx0dGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XHJcbn1cclxuLnVpLWRpYWxvZyAudWktZGlhbG9nLXRpdGxlYmFyLWNsb3NlIHtcclxuXHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0cmlnaHQ6IC4zZW07XHJcblx0dG9wOiA1MCU7XHJcblx0d2lkdGg6IDIwcHg7XHJcblx0bWFyZ2luOiAtMTBweCAwIDAgMDtcclxuXHRwYWRkaW5nOiAxcHg7XHJcblx0aGVpZ2h0OiAyMHB4O1xyXG59XHJcbi51aS1kaWFsb2cgLnVpLWRpYWxvZy1jb250ZW50IHtcclxuXHRwb3NpdGlvbjogcmVsYXRpdmU7XHJcblx0Ym9yZGVyOiAwO1xyXG5cdHBhZGRpbmc6IC41ZW0gMWVtO1xyXG5cdGJhY2tncm91bmQ6IG5vbmU7XHJcblx0b3ZlcmZsb3c6IGF1dG87XHJcbn1cclxuLnVpLWRpYWxvZyAudWktZGlhbG9nLWJ1dHRvbnBhbmUge1xyXG5cdHRleHQtYWxpZ246IGxlZnQ7XHJcblx0Ym9yZGVyLXdpZHRoOiAxcHggMCAwIDA7XHJcblx0YmFja2dyb3VuZC1pbWFnZTogbm9uZTtcclxuXHRtYXJnaW4tdG9wOiAuNWVtO1xyXG5cdHBhZGRpbmc6IC4zZW0gMWVtIC41ZW0gLjRlbTtcclxufVxyXG4udWktZGlhbG9nIC51aS1kaWFsb2ctYnV0dG9ucGFuZSAudWktZGlhbG9nLWJ1dHRvbnNldCB7XHJcblx0ZmxvYXQ6IHJpZ2h0O1xyXG59XHJcbi51aS1kaWFsb2cgLnVpLWRpYWxvZy1idXR0b25wYW5lIGJ1dHRvbiB7XHJcblx0bWFyZ2luOiAuNWVtIC40ZW0gLjVlbSAwO1xyXG5cdGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG4udWktZGlhbG9nIC51aS1yZXNpemFibGUtbiB7XHJcblx0aGVpZ2h0OiAycHg7XHJcblx0dG9wOiAwO1xyXG59XHJcbi51aS1kaWFsb2cgLnVpLXJlc2l6YWJsZS1lIHtcclxuXHR3aWR0aDogMnB4O1xyXG5cdHJpZ2h0OiAwO1xyXG59XHJcbi51aS1kaWFsb2cgLnVpLXJlc2l6YWJsZS1zIHtcclxuXHRoZWlnaHQ6IDJweDtcclxuXHRib3R0b206IDA7XHJcbn1cclxuLnVpLWRpYWxvZyAudWktcmVzaXphYmxlLXcge1xyXG5cdHdpZHRoOiAycHg7XHJcblx0bGVmdDogMDtcclxufVxyXG4udWktZGlhbG9nIC51aS1yZXNpemFibGUtc2UsXHJcbi51aS1kaWFsb2cgLnVpLXJlc2l6YWJsZS1zdyxcclxuLnVpLWRpYWxvZyAudWktcmVzaXphYmxlLW5lLFxyXG4udWktZGlhbG9nIC51aS1yZXNpemFibGUtbncge1xyXG5cdHdpZHRoOiA3cHg7XHJcblx0aGVpZ2h0OiA3cHg7XHJcbn1cclxuLnVpLWRpYWxvZyAudWktcmVzaXphYmxlLXNlIHtcclxuXHRyaWdodDogMDtcclxuXHRib3R0b206IDA7XHJcbn1cclxuLnVpLWRpYWxvZyAudWktcmVzaXphYmxlLXN3IHtcclxuXHRsZWZ0OiAwO1xyXG5cdGJvdHRvbTogMDtcclxufVxyXG4udWktZGlhbG9nIC51aS1yZXNpemFibGUtbmUge1xyXG5cdHJpZ2h0OiAwO1xyXG5cdHRvcDogMDtcclxufVxyXG4udWktZGlhbG9nIC51aS1yZXNpemFibGUtbncge1xyXG5cdGxlZnQ6IDA7XHJcblx0dG9wOiAwO1xyXG59XHJcbi51aS1kcmFnZ2FibGUgLnVpLWRpYWxvZy10aXRsZWJhciB7XHJcblx0Y3Vyc29yOiBtb3ZlO1xyXG59XHJcbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ== */

@@ -11,6 +11,7 @@
     <script src="scripts/bootstrap.js"></script>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/fakeLoader.css">    
+    <link rel="stylesheet" href="styles/jquery-ui.min.css">       
     <script type="text/javascript">
     var appInsights=window.appInsights||function(config){
         function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
@@ -31,7 +32,7 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <a name="top"></a>
+    
     <header>
       <nav class="navbar navbar-default">
         <div class="container">
@@ -48,7 +49,7 @@
 
           <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse navbar-right">
               <ul class="nav navbar-nav">
-                  <li class="active"><a href="#top">Home</a></li>
+                  <li class="active"><a href="#header">Home</a></li>
                   <li><a href="#about">About project</a></li>
                   <li><a href="#technologies">Technologies used</a></li>
               </ul>
@@ -56,7 +57,7 @@
       </div>
      </nav>
     </header>
-
+    <a name="header"></a>
     <section class="main-part">
       <div class="text">
         <h1>Find and Analyse Reviews</h1>
@@ -176,6 +177,10 @@
 
     <div id="fakeloader"></div>
 
+    <div id="dialog" title="Error">
+        <p>Input keyword is too short.</p>
+    </div>
+
 	<!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
@@ -191,8 +196,8 @@
     </div>
 
     <script src="scripts/fakeLoader.js"></script> 
-    <!--<script src="scripts/smoothSlider.js"></script>      -->
+    <script src="scripts/smoothSlider.js"></script>     
+    <script src="scripts/jquery-ui.min.js"></script>  
     <script src="scripts/main.js"></script>       
-
   </body>
 </html>
