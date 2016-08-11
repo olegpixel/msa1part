@@ -116,9 +116,9 @@
                 });
         }
 
-        $(window).load(function () {
+        $(window).on('load', function () {
                 centerLoader();
-                $(window).resize(function () {
+                $(window).on('resize', function () {
                         centerLoader();
                 });
         });
