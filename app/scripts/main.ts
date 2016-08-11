@@ -82,8 +82,11 @@ function renderResults(tResultArray: Array<ResultElement>): void {
         } else {
             sentimentClass = "neutralText";
         }
-        let creationDateConversion: Date = new Date(value.createdAt);
-        
+        // convertison date of the tweet into readable format
+        let creationDateConversion: Date;
+        // IE bug fix
+        creationDateConversion = new Date(Date.parse(value.createdAt.replace(/( \+)/, ' UTC$1')));
+
         let resultHTMLelement:string = "<div class='bs-callout " + sentimentClass + "'>";
         resultHTMLelement += "<span class='twiDate'>" + creationDateConversion.toDateString() + "</span>";
         resultHTMLelement += "<p>" + value.text + "</p>";
@@ -151,19 +154,4 @@ $('#service').submit(function( event ) {
     .fail(function() {
         alert("Error with Twitter API");
     });
-});
-
-$(function() {
-  $('a[href*="#"]:not([href="#"])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 1000);
-        return false;
-      }
-    }
-  });
 });

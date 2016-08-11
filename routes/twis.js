@@ -12,14 +12,8 @@ var T = new Twit({
 });
 
 // Twitter Parse Parameters
-const twiParams = {
-    "lang": "en",
-    "count": "3",
-    "result_type": "popular"
-};
-
 router.get('/:val', function(req, res, next) {
-    T.get('search/tweets', { q: req.params.val, result_type:"popular", lang:"en", count: 30 }, function(err, data, response) {
+    T.get('search/tweets', { q: req.params.val, result_type:"popular", lang:"en", count: 2 }, function(err, data, response) {
         res.status(200).json(data);
     });
 });

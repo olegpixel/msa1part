@@ -158,23 +158,24 @@ header {
 .grey {
   background-color: #f6f6f6;
 }
+.about {
+  p {
+    color: #333333;    
+  }
+}
 .icons {
   .icon-block {
     height: 140px;
     text-align: center; 
-
-    .helper {
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-    }
   }
   img {
     max-width: 110px;
     max-height: 110px;
     padding: 7px;
-    vertical-align: middle;
-    margin: auto;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 footer {
