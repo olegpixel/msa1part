@@ -46,7 +46,7 @@ function textAnalytics(twitterResultArray: Array<TwitElement>): void {
             // Use back-end to solve it
             url: "/textanalysis/" + tempString,
             type: "GET",
-            async: false,
+            async: false
         })
         .done(function(data) {
             let result:any = $.parseJSON(data);
@@ -55,7 +55,7 @@ function textAnalytics(twitterResultArray: Array<TwitElement>): void {
             // add the object into result array
             ResultArray.push(resEl);     
             // show parse status into div on loader layer
-            $("#parseStatus > p").text(ResultArray.length + " out of " + twitterResultArray.length + " tweets analysed");       
+            $("#parseStatusText").text(ResultArray.length + " out of " + twitterResultArray.length + " tweets analysed");       
         })
         .fail(function() {
             ifError = true;
@@ -104,11 +104,15 @@ function renderResults(tResultArray: Array<ResultElement>): void {
 $('#service').submit(function( event ) {
     // prevent default event
     event.preventDefault();
+    // clear previous result if exist
+    twitterResultArray = [];
+    ResultArray = [];
     // Get input text value
     let value:string = $("#value_submit").val();
     // show loader layer
     $("#fakeloader").fakeLoader();
-    $("#parseStatus > p").text("Call Twitter API");
+    $("#fakeloader").fadeIn();
+    $("#parseStatusText").text("Call Twitter API");
     // send request to our back-end for twitter results
     $.ajax({
         url: "/twi/" + value,
@@ -116,7 +120,7 @@ $('#service').submit(function( event ) {
     })
     // on success - store information into an array 
     .done(function(data) {
-        $("#results").addClass( "block grey");
+        $("#results").addClass("block grey");
         // scroll to our results div
         $('html, body').animate({
             scrollTop: $("#results").offset().top
@@ -132,7 +136,8 @@ $('#service').submit(function( event ) {
             resultDiv.append("<p>Sorry, nothing found for this query.</p>");
             $("#fakeloader").fadeOut();
         } else {
-            $("#parseStatus > p").html("Found " + data.statuses.length + " tweets<br />Starting text analysis...");
+            document.getElementById("parseStatusText").innerHTML = "123123";
+            $("#parseStatusText").text("Found " + data.statuses.length + " tweets<br />Starting text analysis...");
             // store all received info into an array
             $.each(data.statuses, function(key, str) {
                 // create new object with one particular twit

@@ -295,5 +295,12 @@ a[name] {
   .fb-share-layer {
     display: none;
   }
+  .bs-callout {
+    p {
+      span {
+        display: block;
+      }
+    }
+  }
 
 }
