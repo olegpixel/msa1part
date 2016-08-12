@@ -62,7 +62,8 @@ function textAnalytics(twitterResultArray: Array<TwitElement>): void {
         }); 
     });
     if (ifError) {
-        alert("Error with Text Analytics API");
+        console.log("Error with Text Analytics API");
+        $("#fakeloader").fadeOut();
     }    
    
 }
@@ -159,7 +160,8 @@ $('#service').submit(function( event ) {
             }
         })
         .fail(function() {
-            alert("Error with Twitter API");
+            console.log("Error with Twitter API");
+            $("#fakeloader").fadeOut();
         });
     } else {
         $("#dialog").dialog();
