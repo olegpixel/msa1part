@@ -213,6 +213,7 @@ a[name] {
     padding: 20px;
     border-color: $light-gray-color;
     background-color: $white-color;
+    overflow: hidden;
 
     .twiDate {
       float: right;
