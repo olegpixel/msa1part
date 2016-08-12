@@ -139,25 +139,25 @@ $('#service').submit(function( event ) {
                 resultDiv.append("<p>Sorry, nothing found for this query.</p>");
                 $("#fakeloader").fadeOut();
             } else {
+                $("#parseStatusText").html("Found " + data.statuses.length + " tweets<br />Starting text analysis...");
                 setTimeout(function() {
-                    $("#parseStatusText").html("Found " + data.statuses.length + " tweets<br />Starting text analysis...");     
+                    // store all received info into an array
+                    $.each(data.statuses, function(key, str) {
+                        // create new object with one particular twit
+                        let twiEl = new TwitElement(str.text, str.created_at, str.retweet_count, str.user.followers_count);
+                        // add the object into array
+                        twitterResultArray.push(twiEl);
+                    });
+                    // creat div for finalized results with unique id=finalResult
+                    resultDiv.append("<div class='col-sm-12'><div id='finalResult'></div></div>");
+                    // call Text Analytics API function
+                    textAnalytics(twitterResultArray);
+                    // hide loader layer
+                    $("#fakeloader").fadeOut();
+                    // call function for showing results
+                    renderResults(ResultArray);
+                    console.log(ResultArray);                         
                 }, 50);
-                // store all received info into an array
-                $.each(data.statuses, function(key, str) {
-                    // create new object with one particular twit
-                    let twiEl = new TwitElement(str.text, str.created_at, str.retweet_count, str.user.followers_count);
-                    // add the object into array
-                    twitterResultArray.push(twiEl);
-                });
-                // creat div for finalized results with unique id=finalResult
-                resultDiv.append("<div class='col-sm-12'><div id='finalResult'></div></div>");
-                // call Text Analytics API function
-                textAnalytics(twitterResultArray);
-                // hide loader layer
-                $("#fakeloader").fadeOut();
-                // call function for showing results
-                renderResults(ResultArray);
-                console.log(ResultArray);
             }
         })
         .fail(function() {
