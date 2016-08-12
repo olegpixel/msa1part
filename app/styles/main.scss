@@ -252,7 +252,9 @@ a[name] {
 .neutralText {
     border-left-color: $gray-color;
 }
-
+#dialog {
+  display: none;
+}
 /* Flashing */
 .icons img:hover {
 	-webkit-animation: flash 0.8s;
