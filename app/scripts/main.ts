@@ -139,8 +139,9 @@ $('#service').submit(function( event ) {
                 resultDiv.append("<p>Sorry, nothing found for this query.</p>");
                 $("#fakeloader").fadeOut();
             } else {
-                document.getElementById("parseStatusText").innerHTML = "123123";
-                $("#parseStatusText").text("Found " + data.statuses.length + " tweets<br />Starting text analysis...");
+                setTimeout(function() {
+                    $("#parseStatusText").html("Found " + data.statuses.length + " tweets<br />Starting text analysis...");     
+                }, 10);
                 // store all received info into an array
                 $.each(data.statuses, function(key, str) {
                     // create new object with one particular twit
