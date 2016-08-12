@@ -55,7 +55,7 @@ function textAnalytics(twitterResultArray: Array<TwitElement>): void {
             // add the object into result array
             ResultArray.push(resEl);     
             // show parse status into div on loader layer
-            $("#parseStatusText").text(ResultArray.length + " out of " + twitterResultArray.length + " tweets analysed");       
+            $("#parseStatusText").html(ResultArray.length + " out of " + twitterResultArray.length + " tweets analysed");       
         })
         .fail(function() {
             ifError = true;
@@ -141,7 +141,7 @@ $('#service').submit(function( event ) {
             } else {
                 setTimeout(function() {
                     $("#parseStatusText").html("Found " + data.statuses.length + " tweets<br />Starting text analysis...");     
-                }, 10);
+                }, 50);
                 // store all received info into an array
                 $.each(data.statuses, function(key, str) {
                     // create new object with one particular twit
