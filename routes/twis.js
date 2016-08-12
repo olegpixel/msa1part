@@ -13,7 +13,7 @@ var T = new Twit({
 
 // Twitter Parse Parameters
 router.get('/:val', function(req, res, next) {
-    T.get('search/tweets', { q: req.params.val, result_type:"popular", lang:"en", count: 2 }, function(err, data, response) {
+    T.get('search/tweets', { q: req.params.val, result_type:"popular", lang:"en", count: 10 }, function(err, data, response) {
         res.status(200).json(data);
     });
 });
